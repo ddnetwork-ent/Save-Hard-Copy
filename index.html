@@ -1,0 +1,2138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DD Network Ent.</title>
+    <meta name="description" content="Transform your vision into extraordinary digital experiences with DD Network Ent. We create sophisticated websites that embody innovation, functionality, and cutting-edge design.">
+    <meta name="keywords" content="web design, digital agency, website development, responsive design, SEO, user experience">
+    <meta name="author" content="DD Network Ent.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ddnetwork.uk/">
+    <meta property="og:title" content="DD Network Ent. - Premium Digital Experiences">
+    <meta property="og:description" content="Transform your vision into extraordinary digital experiences with DD Network Ent.">
+    <meta property="og:image" content="https://ddnetwork.uk/images/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ddnetwork.uk/">
+    <meta property="twitter:title" content="DD Network Ent. - Premium Digital Experiences">
+    <meta property="twitter:description" content="Transform your vision into extraordinary digital experiences with DD Network Ent.">
+    <meta property="twitter:image" content="https://ddnetwork.uk/images/og-image.jpg">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-white: #ffffff;
+            --light-gray: #f8f9fa;
+            --medium-gray: #e6e9ef;
+            --dark-gray: #a8c5d6;
+            --primary-black: #000000;
+            --accent-red: #e6262f;
+            --light-red: #ff4d4d;
+            --text-dark: #121212;
+            --text-light: #666666;
+            --gray-bg: #f5f5f5;
+            --transition-speed: 0.3s;
+            --smooth-transition: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--primary-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar { 
+            width: 6px; 
+        }
+        ::-webkit-scrollbar-track { 
+            background: var(--light-gray); 
+        }
+        ::-webkit-scrollbar-thumb { 
+            background: var(--primary-black); 
+            border-radius: 3px; 
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-red);
+        }
+        
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--primary-white);
+            color: var(--primary-black);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .loading-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+        
+        .loading-bar {
+            width: 120px;
+            height: 2px;
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 1px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .loading-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: var(--primary-black);
+            border-radius: 1px;
+            animation: loading 2s ease-in-out infinite;
+        }
+        
+        @keyframes loading {
+            0% { width: 0; }
+            50% { width: 70%; }
+            100% { width: 100%; }
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background-color: var(--primary-white);
+            color: var(--primary-black);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s var(--smooth-transition);
+            z-index: 998;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--primary-black);
+            color: var(--primary-white);
+            transform: translateY(-3px);
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s var(--smooth-transition);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        header.scrolled { 
+            padding: 15px 0; 
+            box-shadow: 0 1px 10px rgba(0,0,0,0.05); 
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-black);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            transition: color 0.3s var(--smooth-transition);
+        }
+        
+        .logo-text:hover {
+            color: var(--accent-red);
+        }
+        
+        .tagline { 
+            display: none; 
+        }
+        
+        /* Hamburger Menu */
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1001;
+        }
+        
+        .hamburger span {
+            width: 20px;
+            height: 2px;
+            background: var(--primary-black);
+            margin: 2px 0;
+            transition: all 0.3s var(--smooth-transition);
+            border-radius: 1px;
+        }
+        
+        .hamburger.active span:nth-child(1) { 
+            transform: rotate(-45deg) translate(-4px, 4px); 
+        }
+        .hamburger.active span:nth-child(2) { 
+            opacity: 0; 
+        }
+        .hamburger.active span:nth-child(3) { 
+            transform: rotate(45deg) translate(-4px, -4px); 
+        }
+        
+        /* Navigation Styles */
+        nav {
+            flex-grow: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        nav ul {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 70px;
+            flex-direction: column;
+            background-color: var(--primary-white);
+            width: 100%;
+            text-align: center;
+            transition: 0.3s var(--smooth-transition);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 30px 0;
+            z-index: 1000;
+            list-style: none;
+            margin: 0;
+        }
+        
+        nav ul.active { 
+            display: flex; 
+        }
+        
+        nav ul li a {
+            display: block;
+            text-decoration: none;
+            color: var(--primary-black);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s var(--smooth-transition);
+            padding: 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        nav ul li a:hover { 
+            color: var(--accent-red); 
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 20px 60px;
+            position: relative;
+            overflow: hidden;
+            background-color: var(--primary-white);
+            color: var(--primary-black);
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            opacity: 0;
+            animation: fadeInUp 1.2s ease 0.5s forwards;
+        }
+        
+        .hero h1 {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--primary-black);
+            line-height: 1.1;
+            letter-spacing: -0.5px;
+        }
+        
+        .hero .subtitle {
+            font-size: 0.9rem;
+            color: var(--accent-red);
+            margin-bottom: 24px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .hero p {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin: 0 auto 32px;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 32px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s var(--smooth-transition);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            width: 100%;
+            max-width: 240px;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: var(--primary-black);
+            color: var(--primary-white);
+            border: 1px solid var(--primary-black);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-black);
+            border: 1px solid var(--primary-black);
+        }
+        
+        .btn-accent {
+            background: var(--accent-red);
+            color: var(--primary-white);
+            border: 1px solid var(--accent-red);
+        }
+        
+        .btn:hover { 
+            transform: translateY(-2px); 
+        }
+        .btn-primary:hover { 
+            background: var(--accent-red);
+            border-color: var(--accent-red);
+        }
+        .btn-secondary:hover { 
+            background-color: var(--primary-black); 
+            color: var(--primary-white); 
+        }
+        .btn-accent:hover { 
+            background: var(--primary-black);
+            border-color: var(--primary-black);
+        }
+        
+        /* Main Content */
+        main { 
+            padding: 80px 0; 
+        }
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 64px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .section-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s var(--smooth-transition);
+        }
+        
+        .section-title h2 {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-weight: 700;
+            color: var(--primary-black);
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+        
+        .section-title p {
+            font-size: 1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        /* About Section */
+        .about-section {
+            padding: 80px 0;
+            margin-bottom: 80px;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .about-content p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+            color: var(--text-dark);
+        }
+        
+        .about-content h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-black);
+            margin: 30px 0 15px;
+        }
+        
+        .why-choose {
+            background-color: var(--light-gray);
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 40px;
+            text-align: left;
+        }
+        
+        .why-choose ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .why-choose li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+        }
+        
+        .why-choose li:last-child {
+            border-bottom: none;
+        }
+        
+        .why-choose li i {
+            color: var(--accent-red);
+            margin-right: 15px;
+            font-size: 1.1rem;
+        }
+        
+        /* Plans Section */
+        .plans-section {
+            padding: 80px 0;
+            margin-bottom: 80px;
+        }
+        
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+        
+        .plan-card {
+            background-color: var(--primary-white);
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+            text-align: center;
+            transition: all 0.3s var(--smooth-transition);
+            opacity: 0;
+            transform: translateY(20px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .plan-card.featured {
+            border-color: var(--accent-red);
+            transform: scale(1.05);
+        }
+        
+        .plan-card.featured::before {
+            content: 'POPULAR';
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: var(--accent-red);
+            color: var(--primary-white);
+            padding: 5px 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            transform: rotate(45deg);
+        }
+        
+        .plan-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .plan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+        
+        .plan-card.featured:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+        
+        .plan-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--primary-black);
+        }
+        
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-red);
+            margin-bottom: 8px;
+        }
+        
+        .plan-price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-light);
+        }
+        
+        .plan-description {
+            color: var(--text-light);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+        
+        .plan-features {
+            list-style: none;
+            margin-bottom: 32px;
+            text-align: left;
+        }
+        
+        .plan-features li {
+            padding: 8px 0;
+            color: var(--text-dark);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+        }
+        
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .plan-features li i {
+            color: var(--accent-red);
+            margin-right: 12px;
+            font-size: 0.9rem;
+        }
+        
+        .plan-btn {
+            width: 100%;
+            padding: 14px 20px;
+            background: var(--primary-black);
+            color: var(--primary-white);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s var(--smooth-transition);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .plan-btn:hover {
+            background: var(--accent-red);
+            transform: translateY(-2px);
+        }
+        
+        /* Process Section */
+        .process-section {
+            padding: 80px 0;
+            margin-bottom: 80px;
+        }
+        
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+        
+        .process-item {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s var(--smooth-transition);
+        }
+        
+        .process-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .process-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-red);
+            margin-bottom: 16px;
+        }
+        
+        .process-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--light-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 1.5rem;
+            color: var(--primary-black);
+            transition: all 0.3s var(--smooth-transition);
+        }
+        
+        .process-item:hover .process-icon {
+            background-color: var(--primary-black);
+            color: var(--primary-white);
+        }
+        
+        .process-item h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--primary-black);
+        }
+        
+        .process-item p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            margin-bottom: 80px;
+        }
+        
+        .feature-card {
+            background-color: var(--primary-white);
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+            text-align: center;
+            transition: all 0.3s var(--smooth-transition);
+            opacity: 0;
+            transform: translateY(20px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .feature-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s var(--smooth-transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--light-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 1.8rem;
+            color: var(--primary-black);
+            transition: all 0.3s var(--smooth-transition);
+        }
+        
+        .feature-card:hover .feature-icon { 
+            background-color: var(--primary-black);
+            color: var(--primary-white);
+        }
+        
+        .feature-card h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--primary-black);
+        }
+        
+        .feature-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-light);
+        }
+        
+        /* Form Section */
+        .form-section {
+            background-color: var(--primary-white);
+            padding: 48px;
+            border-radius: 12px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+            margin-bottom: 80px;
+            opacity: 0;
+            transform: translateY(20px);
+            position: relative;
+            overflow: hidden;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s var(--smooth-transition);
+        }
+        
+        .form-intro { 
+            text-align: center; 
+            margin-bottom: 40px; 
+        }
+        .form-intro h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-black);
+            margin-bottom: 12px;
+        }
+        
+        .form-intro p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        .form-group { 
+            margin-bottom: 24px; 
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--primary-black);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.3s var(--smooth-transition);
+            background-color: var(--primary-white);
+            color: var(--primary-black);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-red);
+            box-shadow: 0 0 0 3px rgba(230, 38, 47, 0.1);
+        }
+        
+        .form-row { 
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 24px; 
+        }
+        .required { 
+            color: var(--accent-red); 
+        }
+        
+        .form-error {
+            color: var(--accent-red);
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .form-group.error .form-control {
+            border-color: var(--accent-red);
+        }
+        
+        .form-group.error .form-error {
+            display: block;
+        }
+        
+        .btn-submit {
+            background: var(--primary-black);
+            color: var(--primary-white);
+            border: none;
+            padding: 14px 28px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s var(--smooth-transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 32px auto 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            width: 100%;
+            max-width: 240px;
+        }
+        
+        .btn-submit:hover { 
+            background: var(--accent-red);
+            transform: translateY(-2px);
+        }
+        .btn-submit:disabled { 
+            opacity: 0.7; 
+            cursor: not-allowed; 
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            background: var(--light-gray);
+            padding: 64px 20px;
+            border-radius: 12px;
+            margin-bottom: 80px;
+            color: var(--primary-black);
+            text-align: center;
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .stat-item { 
+            opacity: 0; 
+            transform: scale(0.9); 
+        }
+        .stat-item.visible {
+            opacity: 1;
+            transform: scale(1);
+            transition: all 0.4s var(--smooth-transition);
+        }
+        
+        .stat-number {
+            font-family: 'Inter', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-black);
+            margin-bottom: 8px;
+        }
+        
+        .stat-label { 
+            font-size: 0.9rem; 
+            font-weight: 500; 
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-white);
+            color: var(--primary-black);
+            padding: 64px 0 32px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary-black);
+        }
+        
+        .footer-section p, .footer-section li {
+            margin-bottom: 12px;
+            color: var(--text-light);
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+        
+        .footer-section ul { list-style: none; }
+        .footer-section a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s var(--smooth-transition);
+            font-size: 0.9rem;
+        }
+        
+        .footer-section a:hover { 
+            color: var(--accent-red); 
+        }
+        .social-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--light-gray);
+            border-radius: 50%;
+            transition: all 0.3s var(--smooth-transition);
+            color: var(--primary-black);
+            font-size: 1rem;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-black);
+            color: var(--primary-white);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 24px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: rgba(230, 38, 47, 0.1);
+            color: var(--accent-red);
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 0.9rem;
+            animation: slideDown 0.4s var(--smooth-transition);
+        }
+        
+        /* Loading Animation */
+        .loading {
+            display: none;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp { 
+            from { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            } 
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            } 
+        }
+        @keyframes slideDown { 
+            from { 
+                opacity: 0; 
+                transform: translateY(-15px); 
+            } 
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            } 
+        }
+        @keyframes spin { 
+            to { 
+                transform: rotate(360deg); 
+            } 
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            background-color: var(--primary-white);
+            padding: 40px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .modal.show .modal-content {
+            transform: translateY(0);
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            color: var(--accent-red);
+        }
+        
+        .modal-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary-black);
+        }
+        
+        .modal-description {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        /* Customer Service Button */
+        .customer-service-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 56px;
+            height: 56px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+            transition: all 0.3s var(--smooth-transition);
+            text-decoration: none;
+        }
+        
+        .customer-service-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Tablet Styles */
+        @media (min-width: 768px) {
+            .hero-buttons {
+                flex-direction: row;
+            }
+            
+            .btn {
+                width: auto;
+                max-width: none;
+            }
+            
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .stats-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .hero {
+                padding: 120px 30px 80px;
+            }
+            
+            .container {
+                padding: 0 30px;
+            }
+        }
+        
+        /* Desktop Styles */
+        @media (min-width: 992px) {
+            .hamburger {
+                display: none;
+            }
+            
+            nav ul {
+                display: flex;
+                flex-direction: row;
+                position: static;
+                background-color: transparent;
+                box-shadow: none;
+                padding: 0;
+                gap: 40px;
+                width: auto;
+                align-items: center;
+            }
+            
+            nav ul li a {
+                padding: 5px 0;
+                white-space: nowrap;
+            }
+            
+            .hero {
+                padding: 140px 40px 100px;
+            }
+            
+            .container {
+                padding: 0 40px;
+            }
+            
+            .features {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .hero h1 {
+                font-size: clamp(2.5rem, 5vw, 4rem);
+            }
+            
+            .section-title h2 {
+                font-size: clamp(1.8rem, 3vw, 2.5rem);
+            }
+            
+            .feature-card {
+                padding: 48px 32px;
+            }
+            
+            .feature-icon {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+            }
+            
+            .feature-card h3 {
+                font-size: 1.3rem;
+            }
+            
+            .stat-number {
+                font-size: 3rem;
+            }
+        }
+        
+        /* Large Desktop Styles */
+        @media (min-width: 1200px) {
+            .header-container {
+                padding: 0 40px;
+            }
+            
+            .container {
+                padding: 0 40px;
+            }
+            
+            .hero {
+                padding: 160px 40px 120px;
+            }
+            
+            .hero-content {
+                max-width: 900px;
+            }
+            
+            .form-section {
+                max-width: 800px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-logo">DD NETWORK ENT.</div>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+    </div>
+    
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <header id="header">
+        <div class="header-container">
+            <div>
+                <a href="#" class="logo-text">DD Network Ent.</a>
+            </div>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Company</a></li>
+                    <li><a href="#plans">Plans</a></li>
+                    <li><a href="#process">Process</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Customer Service WhatsApp Button -->
+    <a href="https://wa.me/60122600969" class="customer-service-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Digital Excellence Redefined</h1>
+            <div class="subtitle">Crafted with Precision • Engineered for Impact</div>
+            <p>We transform your vision into extraordinary digital experiences, creating sophisticated websites that embody innovation, functionality, and cutting-edge design.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" id="openInterestModal">Sign Up Interest</button>
+                <a href="#plans" class="btn btn-secondary">View Plans</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Interest Modal -->
+    <div class="modal" id="interestModal">
+        <div class="modal-content">
+            <span class="modal-close" id="closeInterestModal">&times;</span>
+            <h3 class="modal-title">Sign Up Your Interest</h3>
+            <p class="modal-description">Join our exclusive community and be the first to know about our latest projects, special offers, and digital innovation insights.</p>
+            
+            <div class="success-message" id="interestSuccessMessage">
+                <i class="fas fa-check-circle"></i> Thank you for your interest! We'll be in touch soon.
+            </div>
+            
+            <form id="interestForm" action="https://formsubmit.co/ddbusiness.co@outlook.com" method="POST" novalidate>
+                <!-- FormSubmit.co Configuration -->
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_subject" value="New Interest Signup from DD Network Ent.">
+                <input type="hidden" name="_template" value="table">
+                
+                <div class="form-group">
+                    <label for="interestName">Full Name <span class="required">*</span></label>
+                    <input type="text" id="interestName" name="name" class="form-control" required>
+                    <div class="form-error">Please enter your full name</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="interestEmail">Email Address <span class="required">*</span></label>
+                    <input type="email" id="interestEmail" name="email" class="form-control" required>
+                    <div class="form-error">Please enter a valid email address</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="interestCompany">Company Name</label>
+                    <input type="text" id="interestCompany" name="company" class="form-control" placeholder="Your company or organization">
+                </div>
+                
+                <div class="form-group">
+                    <label for="interestArea">Area of Interest</label>
+                    <select id="interestArea" name="interest" class="form-control">
+                        <option value="">Select an area</option>
+                        <option value="Web Design">Web Design</option>
+                        <option value="E-commerce Solutions">E-commerce Solutions</option>
+                        <option value="Mobile App Development">Mobile App Development</option>
+                        <option value="SEO Services">SEO Services</option>
+                        <option value="Digital Marketing">Digital Marketing</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="interestMessage">Additional Information</label>
+                    <textarea id="interestMessage" name="message" class="form-control" rows="4" placeholder="Tell us more about your interest..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn-submit" id="interestSubmitBtn">
+                    <span id="interestSubmitText">Submit Interest</span>
+                    <div class="loading" id="interestLoading"></div>
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Plan Modal -->
+    <div class="modal" id="planModal">
+        <div class="modal-content">
+            <span class="modal-close" id="closePlanModal">&times;</span>
+            <h3 class="modal-title">Complete Your Order</h3>
+            <p class="modal-description">Fill in your details to get started with your selected plan.</p>
+            
+            <div class="success-message" id="planSuccessMessage">
+                <i class="fas fa-check-circle"></i> Thank you! Your order has been received. We'll contact you soon.
+            </div>
+            
+            <form id="planForm" action="https://formsubmit.co/ddbusiness.co@outlook.com" method="POST" novalidate>
+                <!-- FormSubmit.co Configuration -->
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_subject" value="New Plan Order from DD Network Ent.">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" id="selectedPlan" name="plan" value="">
+                
+                <div class="form-group">
+                    <label for="planName">Full Name <span class="required">*</span></label>
+                    <input type="text" id="planName" name="name" class="form-control" required>
+                    <div class="form-error">Please enter your full name</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="planEmail">Email Address <span class="required">*</span></label>
+                    <input type="email" id="planEmail" name="email" class="form-control" required>
+                    <div class="form-error">Please enter a valid email address</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="planPhone">Phone Number <span class="required">*</span></label>
+                    <input type="tel" id="planPhone" name="phone" class="form-control" placeholder="+60 12-345 6789" required>
+                    <div class="form-error">Please enter your phone number</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="planCompany">Company Name</label>
+                    <input type="text" id="planCompany" name="company" class="form-control" placeholder="Your company or brand name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="planDescription">Project Details <span class="required">*</span></label>
+                    <textarea id="planDescription" name="description" class="form-control" rows="4" placeholder="Describe your project requirements..." required></textarea>
+                    <div class="form-error">Please describe your project requirements</div>
+                </div>
+                
+                <button type="submit" class="btn-submit" id="planSubmitBtn">
+                    <span id="planSubmitText">Submit Order</span>
+                    <div class="loading" id="planLoading"></div>
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <main>
+        <div class="container">
+            <!-- About Section -->
+            <div class="section-title" id="about">
+                <h2>About DD Network</h2>
+                <p>Learn more about our company and what drives us</p>
+            </div>
+            
+            <section class="about-section">
+                <div class="about-content">
+                    <p>Founded in 2025 by Danial Danish, DD Network is a small but passionate web services team dedicated to helping individuals and businesses get online easily and affordably.</p>
+                    
+                    <p>We specialize in creating simple HTML websites and providing domains for those who need them, while also offering monitoring and basic support to make sure your website stays online and running smoothly.</p>
+                    
+                    <p>At DD Network, we believe that everyone should be able to have a professional online presence, whether it's a personal portfolio, a small business site, or a growing company's first website. Our goal is to make the process easy, affordable, and stress-free for our clients.</p>
+                    
+                    <div class="why-choose">
+                        <h3>Why choose us?</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Affordable website solutions without sacrificing quality</li>
+                            <li><i class="fas fa-check"></i> Free subdomain under https://(yourcompany).ddnetwork.uk for budget-friendly projects</li>
+                            <li><i class="fas fa-check"></i> Optional custom domain setup for those who want full control</li>
+                            <li><i class="fas fa-check"></i> Ongoing monitoring and support by our dedicated team</li>
+                        </ul>
+                        
+                        <p style="margin-top: 20px; font-style: italic;">We're proud to help small businesses and individuals establish their online presence — one simple, beautiful HTML site at a time.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <div class="section-title" id="plans">
+                <h2>Choose Your Plan</h2>
+                <p>Select the perfect plan for your business needs and budget</p>
+            </div>
+            
+            <section class="plans-section">
+                <div class="plans-grid">
+                    <div class="plan-card">
+                        <h3 class="plan-name">🟩 Budget Plan</h3>
+                        <div class="plan-price">RM120<span>/year</span></div>
+                        <p class="plan-description">Under DD Network Subdomain - Example: brandname.ddnetwork.uk</p>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> 1–3 simple pages (Home + About + Contact)</li>
+                            <li><i class="fas fa-check"></i> Basic HTML website (no CMS)</li>
+                            <li><i class="fas fa-check"></i> WhatsApp / Email form</li>
+                            <li><i class="fas fa-check"></i> SSL security</li>
+                            <li><i class="fas fa-check"></i> Hosting under DD Network</li>
+                            <li><i class="fas fa-check"></i> 1 update per year</li>
+                            <li><i class="fas fa-check"></i> Basic support only</li>
+                            <li><i class="fas fa-check"></i> Our team will help monitor the website</li>
+                        </ul>
+                        <div class="plan-domain">
+                            <p><strong>Domain:</strong></p>
+                            <p>Customer can enjoy a free subdomain under https://(yourcompany).ddnetwork.uk</p>
+                            <p>Optionally, customer can purchase their own domain</p>
+                        </div>
+                        <div class="plan-ideal">
+                            <p><strong>Ideal for:</strong></p>
+                            <p>✔ Customers who want a cheap, simple website</p>
+                            <p>✔ Portfolio, small business, or personal site</p>
+                            <p>✔ Those who don't need a full domain yet</p>
+                        </div>
+                        <button class="plan-btn" data-plan="Budget Plan - RM120/year">Choose Plan</button>
+                    </div>
+                    
+                    <div class="plan-card featured">
+                        <h3 class="plan-name">🟦 Starter Plan</h3>
+                        <div class="plan-price">RM299-499<span>/one-time</span></div>
+                        <p class="plan-description">Use Own Domain - Price depends on design & number of pages</p>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Up to 3–5 pages</li>
+                            <li><i class="fas fa-check"></i> Basic HTML website (no CMS)</li>
+                            <li><i class="fas fa-check"></i> Contact form + WhatsApp integration</li>
+                            <li><i class="fas fa-check"></i> Mobile responsive</li>
+                            <li><i class="fas fa-check"></i> SSL security</li>
+                            <li><i class="fas fa-check"></i> Hosting under DD Network</li>
+                            <li><i class="fas fa-check"></i> 1 month support</li>
+                            <li><i class="fas fa-check"></i> Our team will help monitor the website</li>
+                            <li><i class="fas fa-check"></i> Basic SEO</li>
+                        </ul>
+                        <div class="plan-domain">
+                            <p><strong>Domain:</strong></p>
+                            <p>Customer can use their own domain</p>
+                            <p>Or enjoy a free subdomain under https://(yourcompany).ddnetwork.uk</p>
+                        </div>
+                        <div class="plan-ideal">
+                            <p><strong>Ideal for:</strong></p>
+                            <p>✔ Small businesses or startups</p>
+                            <p>✔ Customers wanting a proper website</p>
+                            <p>✔ Moderate budget</p>
+                        </div>
+                        <button class="plan-btn" data-plan="Starter Plan - RM299-499">Choose Plan</button>
+                    </div>
+                    
+                    <div class="plan-card">
+                        <h3 class="plan-name">🟧 Business Plan</h3>
+                        <div class="plan-price">RM699-999<span>/one-time</span></div>
+                        <p class="plan-description">Still Affordable - Professional solution for growing businesses</p>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Up to 7 pages</li>
+                            <li><i class="fas fa-check"></i> Custom HTML design (no CMS)</li>
+                            <li><i class="fas fa-check"></i> Contact form + WhatsApp integration</li>
+                            <li><i class="fas fa-check"></i> Mobile responsive</li>
+                            <li><i class="fas fa-check"></i> SSL security</li>
+                            <li><i class="fas fa-check"></i> Hosting under DD Network</li>
+                            <li><i class="fas fa-check"></i> 2 months support</li>
+                            <li><i class="fas fa-check"></i> Our team will help monitor the website</li>
+                            <li><i class="fas fa-check"></i> Basic SEO</li>
+                            <li><i class="fas fa-check"></i> Extra features: gallery, blog, simple booking system</li>
+                        </ul>
+                        <div class="plan-domain">
+                            <p><strong>Domain:</strong></p>
+                            <p>Customer can use their own domain</p>
+                            <p>Or enjoy a free subdomain under https://(yourcompany).ddnetwork.uk</p>
+                        </div>
+                        <div class="plan-ideal">
+                            <p><strong>Ideal for:</strong></p>
+                            <p>✔ Customers wanting a professional look</p>
+                            <p>✔ Small companies needing credibility</p>
+                            <p>✔ Those wanting more pages & features without a CMS</p>
+                        </div>
+                        <button class="plan-btn" data-plan="Business Plan - RM699-999">Choose Plan</button>
+                    </div>
+                </div>
+                
+                <div class="section-title" style="margin-top: 60px;">
+                    <h2>Optional Add-Ons</h2>
+                    <p>Enhance your website with these additional services</p>
+                </div>
+                
+                <div class="add-ons">
+                    <div class="add-on-card">
+                        <h3>Extra Page</h3>
+                        <p>RM50–RM70 / page</p>
+                    </div>
+                    <div class="add-on-card">
+                        <h3>Monthly Maintenance</h3>
+                        <p>RM10–RM20 / month</p>
+                    </div>
+                    <div class="add-on-card">
+                        <h3>Custom Email Setup</h3>
+                        <p>RM20</p>
+                    </div>
+                    <div class="add-on-card">
+                        <h3>Domain Transfer</h3>
+                        <p>RM10</p>
+                    </div>
+                </div>
+            </section>
+            
+            <div class="section-title">
+                <h2>Our Process</h2>
+                <p>From concept to launch, we follow a streamlined approach to ensure your project exceeds expectations</p>
+            </div>
+            
+            <section class="process-section" id="process">
+                <div class="process-grid">
+                    <div class="process-item">
+                        <div class="process-number">01</div>
+                        <div class="process-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>Discovery</h3>
+                        <p>We begin by understanding your business goals, target audience, and vision for the project.</p>
+                    </div>
+                    
+                    <div class="process-item">
+                        <div class="process-number">02</div>
+                        <div class="process-icon">
+                            <i class="fas fa-chess"></i>
+                        </div>
+                        <h3>Strategy</h3>
+                        <p>Our team develops a comprehensive strategy that aligns with your objectives and market needs.</p>
+                    </div>
+                    
+                    <div class="process-item">
+                        <div class="process-number">03</div>
+                        <div class="process-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3>Design</h3>
+                        <p>We create stunning, user-centered designs that bring your vision to life.</p>
+                    </div>
+                    
+                    <div class="process-item">
+                        <div class="process-number">04</div>
+                        <div class="process-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Development</h3>
+                        <p>Our developers build robust, scalable solutions using cutting-edge technologies.</p>
+                    </div>
+                    
+                    <div class="process-item">
+                        <div class="process-number">05</div>
+                        <div class="process-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>Launch</h3>
+                        <p>We deploy your project with precision and provide ongoing support for optimal performance.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <div class="section-title" id="services">
+                <h2>Premium Digital Solutions</h2>
+                <p>Cutting-edge web design services engineered for excellence and impact</p>
+            </div>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fab fa-html5"></i></div>
+                    <h3>Pristine Code</h3>
+                    <p>W3C compliant, semantic HTML5 architecture that ensures optimal performance, accessibility, and SEO excellence.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-palette"></i></div>
+                    <h3>Elite Design</h3>
+                    <p>Sophisticated, visually striking designs tailored to your brand, creating memorable digital experiences.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>Seamless Adaptation</h3>
+                    <p>Flawless responsive design across all devices, ensuring your website maintains its impact on every screen.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-search"></i></div>
+                    <h3>SEO Excellence</h3>
+                    <p>Advanced SEO strategies implemented from the ground up to enhance visibility and drive organic traffic.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>Peak Performance</h3>
+                    <p>Lightning-fast load times and smooth interactions for an exceptional user experience.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-crown"></i></div>
+                    <h3>Premium Support</h3>
+                    <p>Dedicated ongoing support and maintenance to ensure your website performs at the highest standard.</p>
+                </div>
+            </div>
+            
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+                <p>Ready to start your next digital project? Let's discuss how we can help you achieve your goals.</p>
+            </div>
+            
+            <div class="form-section" id="contact">
+                <div class="success-message" id="successMessage">
+                    <i class="fas fa-check-circle"></i> Thank you! Your project details have been sent. We will contact you soon.
+                </div>
+                
+                <form id="websiteForm" action="https://formsubmit.co/ddbusiness.co@outlook.com" method="POST" novalidate>
+                    <!-- FormSubmit.co Configuration -->
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_subject" value="New Website Project Inquiry from DD Network Ent.">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_next" value="https://store.ddnetwork.uk">
+                    
+                    <div class="form-intro">
+                        <h3>Project Inquiry</h3>
+                        <p>Tell us about your vision. The more details you provide, the better we can bring your ideas to life.</p>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name <span class="required">*</span></label>
+                            <input type="text" id="firstName" name="firstName" class="form-control" required>
+                            <div class="form-error">Please enter your first name</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name <span class="required">*</span></label>
+                            <input type="text" id="lastName" name="lastName" class="form-control" required>
+                            <div class="form-error">Please enter your last name</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                            <div class="form-error">Please enter a valid email address</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="+60 12-345 6789">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company">Company Name</label>
+                        <input type="text" id="company" name="company" class="form-control" placeholder="Your company or brand name">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="websiteType">Website Type <span class="required">*</span></label>
+                            <select id="websiteType" name="websiteType" class="form-control" required>
+                                <option value="">Select a type</option>
+                                <option value="Portfolio">Portfolio</option>
+                                <option value="E-commerce">E-commerce</option>
+                                <option value="Corporate">Corporate</option>
+                                <option value="Blog/Magazine">Blog/Magazine</option>
+                                <option value="Landing Page">Landing Page</option>
+                                <option value="Creative/Agency">Creative/Agency</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <div class="form-error">Please select a website type</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="budget">Estimated Budget <span class="required">*</span></label>
+                            <select id="budget" name="budget" class="form-control" required>
+                                <option value="">Select a budget range</option>
+                                <option value="RM 100 - RM 500">RM 100 - RM 500</option>
+                                <option value="RM 500 - RM 1,000">RM 500 - RM 1,000</option>
+                                <option value="RM 1,000 - RM 2,500">RM 1,000 - RM 2,500</option>
+                                <option value="RM 2,500 - RM 5,000">RM 2,500 - RM 5,000</option>
+                                <option value="RM 5,000+">RM 5,000+</option>
+                                <option value="Custom Quote">Custom Quote</option>
+                            </select>
+                            <div class="form-error">Please select a budget range</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="description">Describe Your Vision <span class="required">*</span></label>
+                        <textarea id="description" name="description" class="form-control" rows="4" placeholder="Describe the look, feel, and functionality you envision..." required></textarea>
+                        <div class="form-error">Please describe your project vision</div>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit" id="submitBtn">
+                        <span id="submitText">Submit Project Request</span>
+                        <div class="loading" id="loading"></div>
+                    </button>
+                </form>
+            </div>
+            
+            <div class="stats-section">
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Client Satisfaction</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">5★</div>
+                        <div class="stat-label">Average Rating</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Premium Support</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>DD Network Ent.</h3>
+                    <p>Founded in 2025 by <a href="https://www.instagram.com/danialddanish/" target="_blank" style="color: var(--text-light); font-weight: 600;">Danial Danish</a>, we specialize in creating exceptional digital experiences that embody innovation, sophistication, and cutting-edge design.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/danialddanish/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Company</a></li>
+                        <li><a href="#plans">Plans</a></li>
+                        <li><a href="#process">Process</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Custom HTML Design</a></li>
+                        <li><a href="#">Responsive Development</a></li>
+                        <li><a href="#">Website Optimization</a></li>
+                        <li><a href="#">SEO Implementation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-envelope"></i> works@ddnetwork.uk</p>
+                    <p><i class="fas fa-phone"></i> +60 12-260 0969</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Kedah, Malaysia</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 DD Network Ent. All Rights Reserved. Founded and led by Danial Danish.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Loading Screen
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loadingScreen').classList.add('hidden');
+            }, 1200);
+        });
+        
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 30) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Interest Modal
+        const interestModal = document.getElementById('interestModal');
+        const openInterestModalBtn = document.getElementById('openInterestModal');
+        const closeInterestModalBtn = document.getElementById('closeInterestModal');
+        
+        openInterestModalBtn.addEventListener('click', function() {
+            interestModal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeInterestModalBtn.addEventListener('click', function() {
+            interestModal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Plan Modal
+        const planModal = document.getElementById('planModal');
+        const closePlanModalBtn = document.getElementById('closePlanModal');
+        const selectedPlanInput = document.getElementById('selectedPlan');
+        
+        closePlanModalBtn.addEventListener('click', function() {
+            planModal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Plan selection buttons
+        document.querySelectorAll('.plan-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const planName = this.getAttribute('data-plan');
+                selectedPlanInput.value = planName;
+                planModal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        // Close modals when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === interestModal) {
+                interestModal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+            if (event.target === planModal) {
+                planModal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Interest Form Validation
+        document.getElementById('interestForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Reset previous errors
+            document.querySelectorAll('#interestForm .form-group').forEach(group => {
+                group.classList.remove('error');
+            });
+            
+            // Validate form
+            let isValid = true;
+            const requiredFields = ['interestName', 'interestEmail'];
+            
+            requiredFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (!field.value.trim()) {
+                    field.closest('.form-group').classList.add('error');
+                    isValid = false;
+                }
+            });
+            
+            // Validate email format
+            const emailField = document.getElementById('interestEmail');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailField.value && !emailRegex.test(emailField.value)) {
+                emailField.closest('.form-group').classList.add('error');
+                isValid = false;
+            }
+            
+            if (isValid) {
+                const submitBtn = document.getElementById('interestSubmitBtn');
+                const submitText = document.getElementById('interestSubmitText');
+                const loading = document.getElementById('interestLoading');
+                const successMessage = document.getElementById('interestSuccessMessage');
+                
+                // Show loading state
+                submitBtn.disabled = true;
+                submitText.textContent = 'Processing...';
+                loading.style.display = 'inline-block';
+                
+                // Submit form
+                this.submit();
+            }
+        });
+        
+        // Plan Form Validation
+        document.getElementById('planForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Reset previous errors
+            document.querySelectorAll('#planForm .form-group').forEach(group => {
+                group.classList.remove('error');
+            });
+            
+            // Validate form
+            let isValid = true;
+            const requiredFields = ['planName', 'planEmail', 'planPhone', 'planDescription'];
+            
+            requiredFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (!field.value.trim()) {
+                    field.closest('.form-group').classList.add('error');
+                    isValid = false;
+                }
+            });
+            
+            // Validate email format
+            const emailField = document.getElementById('planEmail');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailField.value && !emailRegex.test(emailField.value)) {
+                emailField.closest('.form-group').classList.add('error');
+                isValid = false;
+            }
+            
+            if (isValid) {
+                const submitBtn = document.getElementById('planSubmitBtn');
+                const submitText = document.getElementById('planSubmitText');
+                const loading = document.getElementById('planLoading');
+                const successMessage = document.getElementById('planSuccessMessage');
+                
+                // Show loading state
+                submitBtn.disabled = true;
+                submitText.textContent = 'Processing...';
+                loading.style.display = 'inline-block';
+                
+                // Submit form
+                this.submit();
+            }
+        });
+        
+        // Project Form Validation
+        document.getElementById('websiteForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Reset previous errors
+            document.querySelectorAll('.form-group').forEach(group => {
+                group.classList.remove('error');
+            });
+            
+            // Validate form
+            let isValid = true;
+            const requiredFields = ['firstName', 'lastName', 'email', 'websiteType', 'budget', 'description'];
+            
+            requiredFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (!field.value.trim()) {
+                    field.closest('.form-group').classList.add('error');
+                    isValid = false;
+                }
+            });
+            
+            // Validate email format
+            const emailField = document.getElementById('email');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailField.value && !emailRegex.test(emailField.value)) {
+                emailField.closest('.form-group').classList.add('error');
+                isValid = false;
+            }
+            
+            if (isValid) {
+                const submitBtn = document.getElementById('submitBtn');
+                const submitText = document.getElementById('submitText');
+                const loading = document.getElementById('loading');
+                
+                // Show loading state
+                submitBtn.disabled = true;
+                submitText.textContent = 'Processing...';
+                loading.style.display = 'inline-block';
+                
+                // Submit form
+                this.submit();
+            }
+        });
+        
+        // Remove error state on input
+        document.querySelectorAll('.form-control').forEach(input => {
+            input.addEventListener('input', function() {
+                this.closest('.form-group').classList.remove('error');
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerHeight = document.getElementById('header').offsetHeight;
+                    const targetPosition = targetElement.offsetTop - headerHeight - 10;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Intersection Observer for Animations
+        const observerOptions = { 
+            threshold: 0.1, 
+            rootMargin: '0px 0px -30px 0px' 
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements with staggered animation
+        document.querySelectorAll('.section-title, .form-section, .feature-card, .stat-item, .process-item, .plan-card').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Counter Animation for Stats
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    
+                    // Animate numbers
+                    statNumbers[0].textContent = '0%';
+                    statNumbers[1].textContent = '0+';
+                    
+                    setTimeout(() => {
+                        statNumbers[0].textContent = '100%';
+                        statNumbers[1].textContent = '50+';
+                    }, 200);
+                    
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        const statsSection = document.querySelector('.stats-section');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+    </script>
+</body>
+</html>
